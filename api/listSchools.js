@@ -1,13 +1,13 @@
 import mysql from 'mysql';
 import db from '../db.js';
 
-const listSchools = async (req, res) => {
+const listSchools = async  (req, res) => {
     const { latitude, longitude } = req.query;
-
+    try {
         // Query to fetch all schools
         const query = 'SELECT id, name, address, latitude, longitude FROM schools';
 
-        db.query(query, (err, results) => {
+        await db.query(query, (err, results) => {
             if (err) {
                 console.error('Error fetching schools: ', err);
                 return res.status(500).json({ error: 'Error fetching schools' });
@@ -25,9 +25,14 @@ const listSchools = async (req, res) => {
             // Send the response
             res.json(schools);
 
+
         });
-    // Close the connection after query execution
-    db.end();
+    }
+    catch (error) {
+        console.error('Error fetching schools:', error);
+        res.status(500).json({ message: 'Internal Server Error' })
+    }
+    
 };
 
 // Function to calculate distance between two points (Haversine formula)
