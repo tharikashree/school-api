@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const db = mysql.createConnection({
-    host: "school-api-97if.onrender.com",
+    host: "localhost",
     user: "root",
     password: process.env.DB_PASSWORD,
     database: "school-api",
