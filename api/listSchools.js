@@ -1,4 +1,3 @@
-import mysql from 'mysql';
 import db from '../db.js';
 
 const listSchools = async  (req, res) => {

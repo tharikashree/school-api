@@ -13,8 +13,8 @@ dotenv.config();
 app.get('/', (req, res) => {
     res.send('School API is running');
 });
-app.post('/addSchool', addSchool);
-app.get('/listSchools', listSchools);
+app.post('/api/addSchool', addSchool);
+app.get('/api/listSchools', listSchools);
 
 const PORT = process.env.PORT ;
 
